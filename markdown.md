@@ -40,9 +40,9 @@ def test():
 
 [ 마크다운](https://gist.github.com/ihoneymon/652be052a0727ad59601)
 
-![강아지](test.assets/pet.jpg)
 
 
+![pet](https://user-images.githubusercontent.com/97649336/149336831-a2225bd9-e210-4110-a513-e31046967400.jpg)
 
 자동으로 폴더를 만들고 이미지를 복사해서 그 경로로 이미지를 넣어주고 있음!
 
