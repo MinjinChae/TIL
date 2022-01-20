@@ -300,17 +300,57 @@ base case에 도달할 때까지 함수를 호출함,
 
 모듈 파이썬 파일 .py단위로 작성한 것
 
+
+
 패키지 모듈의 집합
 
-모듈과 패키지 불러오기
+모듈: 
 
-improt module
+패키지:
+
+라이브러리: 
+
+
+
+모듈과 패키지 불러오기 
+
+improt module 파이썬 파일을 다 불러오는건 비효율적이야  module.
+
+= from modeule import *  * All 이라는 뜻 (정규표현식 참조)  같은표현이지만 살짝 다름 function() 이렇게 바로 쓸 수 있음!
+
+from module  import var, fuction, Class 이 모듈에서 ~를 불러올 수 있다
+
+from package import module 패키지에서 모듈을 불러 올 수 있다
+
+form package.module ~
 
 pprint는 정렬해서 좀 더 예쁘게 출력함
 
 *전체를 가져오겠다는 뜻..?
 
-$ 
+import math
+
+import random
+
+파이썬에는 들어있지만 아직 불러오지는 않은 상태라서  import로 불러옴
+
+print min max 등 은 이미 불러온 상태
+
+파이썬 패키지 관리자 pip 외부 패키지들을 서치하도록 도와주는 패키지 관리 시스템 =프로그램
+
+외부 패키지 덕분에 파이썬이 강력한 언어가 됨 
+
+$ pip install 패키지 이름 가장 최신의 배포판을 설치해줌  이게 가장 좋은거? ㄴㄴ 버전이 달라지면 안에 함수가 달라질수도 있어서 내가 개발한 버전 자체가 중요함 내가 사용한 라이브러리나 패키지의 버전을 명시해줘야함
+
+==특정버전
+
+==>      최신법전 설치
+
+unistall 패키지 이름 패키지 지우기
+
+pip list 
+
+pip freeze pip한테 멈춰! 꼼짝마!하고 얼리는거 내가 설치한 패키지의 목록과 패키지들의 버전을 파일로 만들어줌
 
 cmd bash에서 설치하라는 뜻
 
@@ -318,7 +358,17 @@ pip feeze > requirements.txt
 
 같이 프로젝트를 하는 친구가 패키지 버전을 같이 맞추지 않으면 안되니까 그럴때 공유함
 
-pip install -r requirrements.txt
+pip install -r requirrements.txt requirements에 있는 외부 모듈,패키지를 한번에 설치할 수 있음
+
+모듈 패키지 활용하기
+
+ 패키지 
+
+my check.py login.py
+
+my.chekck  
+
+my라는 파일에 ___\init\__ .py를 만들어줘야함..(시험..?) 하위버전과의 호환을 위해서
 
 사용자 모듈과 패키지
 
@@ -332,3 +382,16 @@ from check import *
 
 가상환경
 
+우리가 프로젝트를 한다고 했을 때 프로젝트 A 에서는 django2.2버전 프로젝트B에서는 django 3.x버전을 쓰는데 하나의 컴퓨터 안에서 패키지가 똑같은데 버전만 다른 경우
+
+각각의 따로따로 패키지를 설치할 수 있는 환경을 제공함 프로젝트 A에서는 이 가상환경을 쓰고  프로젝트B 에서는 이 가상환경을 쓰자 
+
+venv 특정 디렉토리에 가상 환경을 만들어줌
+
+python -m venv <폴더명>
+
+python -m venv venv(관례는 아니고 이름짓기 귀찮아서..)
+
+script파일에 있는 내용을 지금 바로 activate 시켜줘 라는 의미로 soruce를 사용
+
+가상환경 비활성화는 deactivate
