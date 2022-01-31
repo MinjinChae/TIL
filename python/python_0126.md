@@ -464,6 +464,10 @@ super() 엄마부르는거
 
 하나의 클래스가 여러  객체를 받고 같은 메서드로 응답 할 수 있음
 
+mro메서드(Method Resolution Order)
+
+모든 클래스는 object를 상속받고 있다는것!! 끝은 object..
+
 
 
 캡슐화
