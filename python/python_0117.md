@@ -1,4 +1,4 @@
-# Python 기초
+#  Python 기초
 
 ## 파이썬 개발 환경(Python Environment)
 
@@ -9,8 +9,6 @@
 쉽게 배울 수 있음, 타언어보다 간결함, 인터프리터 언어, 객체 지향 프로그래밍
 
 인터프리터 언어 vs 컴파일 언어(컴파일러)
-
-
 
 인터프리터 언어:  코드를 대화하듯 한 줄 입력하고 실행한 후, 바로 확인할 수 있음(한줄 읽고 번역해서 실행하고 또 한줄을 읽고 번역해서 실행함) 
 
@@ -961,129 +959,453 @@ s[::-1]
 
 ###  
 
-출력된 결과로만 보면 안됨
+# 제어문
 
-제어문
+## 제어문
 
-위에서부터 아래로 순차적으로 수행
+### 제어문
+
+파이썬은 기본적으로 위에서부터 아래로 순차적으로 수행
 
 선택적으로 실행하거나 계속하여 실행하는 제어가 필요함
 
-순서도로 표현 가능 
+순서도(flow chart)로 표현 가능
 
-조건문 조건문은 참/거짓을 판단할 수 있는 조건식과 함께 사용
 
-연산자를 사용 num=3 >=3 <=3 >3 <3
 
+ ## 조건문
+
+조건문은 참/거짓을 판단할 수 있는 조건식과 함께 사용
+
+expression에는 참/거짓에 대한 조건식
+
+조건이 참인 경우 들여쓰기 되어있는 코드 블럭 실행
+
+이외의 경우 else 이후 들여쓰기 되어있는 코드 블럭 실행(else는 선택적 활용)
+
+```python
 if <expression == True>:
-
-​	#Run this Code block
+	#Run this Code block
 
 else:
+	#Run this Code block
+```
 
- 
-
-반드시 : 사용 그리고 들여쓰기 조심!
-
-그냥 input('숫자를 입력해주세요 : ')
-
-타입이 str 그래서 int로 감싸주고 형변환을 해줘야함
+ 반드시 ' : ' 사용 그리고 들여쓰기 조심!
 
 
 
-복수조건문  복수의 조건식을 활용할 경우 elif를 활용
+실습문제 조건문을 통해 변수 num의 값을 홀수/짝수 여부를 출력
 
-여기서 유의할 점은 else에는 expression이 들어갈 수 없다 else는 조건이 들어갈 수 없다는것
-
-else는 나머지 모든것이기 때문에 열려있어야함
-
-SyntaxError는 문법오류
-
-반복문
-
-while for의 차이는?
-
-반복문은 특정한 조건에 도달할때까지 반복하는거
-
-while문은 조건식이 참인 경우 반복적으로 코드를 실행
-
-별표 반드시 종료 조건이 필요!!!
+```python
+num = int(input('숫자 입력:')) # 그냥 input을 하면 타입이 str 그래서 int로 감싸주고 형변환을 해줘야함
+if num % 2: # if num % 2 == 1:
+    print('홀수입니다.')
+else:
+    print('짝수입니다.')
+```
 
 
 
-파이썬튜터 활용
+## 복수조건문 
 
-실습 
+ 복수의 조건식을 활용할 경우 elif를 활용
 
-숫자로 활용하고 싶다면  int로 형변환 필요
+```python
+if <expression>:
+	#Code block
 
-어떤값을 초기화 하는게 좋을지 생각하는것이 중요!!
+elif <expression>:
+	#Code block
+
+elif <expression>:
+	#Code block
+
+else:
+	#Code block
+```
+
+여기서 유의할 점은 else에는 expression이 들어갈 수 없다 else는 조건이 들어갈 수 없다는것!
+
+-> else는 나머지 모든것이기 때문에 열려있어야함
 
 
 
-for문 시퀀스를 포함한 순회가능한 객체요소를 모두 순회함
+## 중첩 조건문
 
-변수의 이름으로 값이 할당된다
+조건문은 다른 조건문에 중첩되어 사용될 수 있음
+
+```python
+if <expression>:
+	#Code block
+    	if <expression>:
+            #Code block
+
+else:
+	#Code block
+```
+
+
+
+## 조건 표현식
+
+### 조건 표현식
+
+조건에 따라 값을 정할때 활용
+
+<true인 경우 값> if \<expression> else <false인 경우 값>
+
+실습문제
+
+```python
+num = -5
+if num >= 0:
+	value = num
+else:
+	value = 0
+print(value)
+```
+
+```python
+# 조건 표현식
+num = -5
+value = num if num >= 0 else 0
+print(value)
+```
+
+
+
+# 반복문
+
+특정한 조건에 도달할때까지 반복하는것
+
+## While문
+
+조건식이 참인 경우 반복적으로 코드를 실행
+
+@ 반드시 종료 조건이 필요!!! 안 그러면 무한 루프
+
+```python
+while <expression>:
+	# Code block
+```
+
+```python
+a = 0
+while a < 5:  # 종료 조건
+    pirnt('a')  
+    a += 1  # 반복 시행시 a가 1씩 증가
+print('끝')
+```
+
+실습 문제 1부터 사용자가 입력한 양의 정수까지의 총합 구하기
+
+```python
+n = 0
+total = 0
+user_input = int(input())
+while n <= user_input:
+    total += n
+    n += 1
+print(total)
+```
+
+
+
+## For문
+
+### For문
+
+시퀀스(string,tuple,list,range)를 포함한 순회간으한 객체 요소를 모두 순회함
+
+while문과  for문의 차이는? while문은 종료 조건이 필요하지만 for문은 처음부터 끝까지 모두 순회하므로 별도의 종료 조건이 필요 없음
+
+```python
+for <변수명> in <iterable>:
+    # Code block
+```
+
+### For문 일반 형식
+
+순회할 수 있는 자료형(str,list,dict 등)
+
+순회형 함수(range,enumerate)
+
+```python
+for <변수명> in <iterable>:
+    # Code block
+else:  # 선택사항
+    # Code block
+```
+
+### 문자열 순회
 
 for문 단순순회 ,range사용한 인덱싱 두가지 방법이 있으니 꼭 기억하자!!
 
-range(len   많이 씀! happy 면 len 5 0,1,2,3,4
+```python
+chars = input()
+happy
+for char in chars:
+	print(char)
+```
 
-print 함수는 자동으로 줄 바꿈..!
+h
+
+a
+
+p
+
+p
+
+y
+
+사용자가 입력한 문자를 range를 활용하여 한 글자씩 출력하기 range(len  x) 많이 활용함! 
+
+```python
+chars = input()
+happy
+for idx in range(len(chars)):
+	print(chars[idx])
+```
+
+h
+
+a
+
+p
+
+p
+
+y
+
+print 함수는 자동으로 줄 바꿈
 
 print(     ,end='\n' )
 
 print(   ,end=' ') h a p p y
 
-딕셔너리 순회
+### 딕셔너리 순회
 
-중요! 딕셔너리는 기본적으로 key를 순회하며 key를 통해 
+@중요! 딕셔너리는 기본적으로 key를 순회하며 key를 통해 값을 활용
 
-모든 키를 나에게 줘
+```python
+grades = {'john':  80, 'eric': 90}
+for student in grades:
+  print(student)
+```
 
-모든 value 를 나ㅔ게줘
+john
 
+eric
 
+```python
+grades = {'john':  80, 'eric': 90}
+for student in grades:
+  print(grades[student]) # dict[key]를 통해 value 값 출력
+```
 
-enumerate 순회
+80
 
-i=0 i+=1 
+90
 
-0부터 시작해서 계속 1씩 증가하는 것을  idx에 넣어줌
+keys()
 
-enumerate 의 짝꿍은 for문
+```python
+for key in dict.keys():
+    print(key)
+    print(dict[key])
+```
 
+values()
 
+```python
+for val in dict.values():
+    print(val)
+```
 
-List Comprehension 
+items()
 
-이해 이해력 포함 압축
+```python
+for key, val in dict.items():
+    print(key, val)
+```
+
+```python
+grades = {'john':  80, 'eric': 90}
+for name, score in grades.items():
+  print(name, score)
+```
+
+john 80
+
+eric 90
+
+### enumerate순회
+
+enumerate()
+
+인덱스와 객체를 쌍으로 담은 열거형(enumerate) 객체 반환
+
+(index, value)형태의 tuple로 구성된 열거 객체 반환
+
+```python
+members = ['민수', '영희', '철수']
+for idx, member in enumerate(members): # enumerate 의 짝꿍은 for문
+    print(idx, member)   
+```
+
+0 민수
+
+1 영희
+
+2 철수
+
+```python
+members = ['민수', '영희', '철수']
+for idx, member in enumerate(members):
+    print(list(enumerate(members, start=1)) # 기본값은 0, start를 지정하면 해당 값부터 증가
+```
+
+[( 1, '민수' ),( 2, '영희' ),( 3, '철수' )]
+
+### List Comprehension 
+
+comprehension? 이해 이해력 포함 압축
 
 리스트를 잘 이해해서 압축해서 쓸 수 있는 표현 -> 코드줄이기
 
-1번까지는 추천..ㅎ
+[\<expression> for <변수> in \<iterable>]
+
+[\<expression> for <변수> in \<iterable> if <조건식>]
+
+```python
+# 1~3의 세제곱 리스트 만들기
+cubic_list = []
+for number in range(1, 4):
+    cubic_list.append(number ** 3)
+print(cubic_list)
+```
+
+[1, 8, 27]
+
+```python
+cubic_list = [number ** 3 for number in range(1, 4)]
+print(cubic_list)
+```
+
+[1, 8, 27]
+
+### Dictionary Comprehension
+
+ {key:value for <변수> in \<iterable>}
+
+ {key:value for <변수> in \<iterable>  if <조건식>}
+
+```python
+# 1~3의 세제곱 딕셔너리 만들기
+cubic_dict = {}
+for number in range(1, 4):
+    cubic_dict[numbers] = number ** 3
+print(cubic_dict)
+```
+
+{1: 1, 2: 8, 3: 27}
+
+```python
+cube_dict = {number:number**3 for number in range(1, 4)}
+print(cubic_dict)
+```
+
+{1: 1, 2: 8, 3: 27}
 
 
 
-반복문 제어
+## 반복문 제어
+
+### break
 
 break loop exit 반복문을 종료
 
+```python
+n = 0
+while True:
+    if n == 3:
+        break
+    print(n)
+    n += 1
+```
+
+0
+
+1
+
+2
+
+### continue
+
 continue  다음 반복을 수행
+
+```python
+for i in range(6):
+    if i % 2 == 0:
+        continue # continue 이후의 코드 print(i)는 실행되지 않음
+    print(i)1
+```
+
+3
+
+5
+
+### pass
 
 pass 아무것도 하지 않음 syntax error를 피하기 위해서 사용 
 
-else  if의 조건문이 수행이 되냐 안되냐 끝까지 반복문을 실행한 이후에 else문 실행 break에 걸리면 else문이 실행안됨
+반목문이 아니여도 사용 가능
+
+```python
+for i in range(5):
+    if i == 3:
+        pass
+    print(i)
+```
+
+0
+
+1
+
+2
+
+3
+
+4
+
+### else
+
+```python
+for char in 'apple':
+    if char == 'b':
+        print('b!')
+        break
+else:
+    print('b가 없습니다.')
+```
+
+b가 없습니다.
+
+```python
+for char in 'banana':
+    if char == 'b':
+        print('b!')
+        break
+else:
+    print('b가 없습니다.')
+```
+
+b!
+
+if의 조건문이 수행이 되냐 안되냐 끝까지 반복문을 실행한 이후에 else문 실행 break에 걸리면 else문이 실행안됨
 
 if else로 연결되는것이 아니기 때문에 else문 들여쓰기 하지 않아도 됨
-
-for vs while
-
-for는 반복 가능한 애들을 꺼내준다 통(컨테이너)을 어떻게 만들지 생각하기
-
-while은 어떠한 조건이 참일 때 실행한다 -> 종료조건(거짓) 조건을 어떻게 설계할지 생각하기
-
-=> 결과 변수를 초기화하는데 많은 생각을 해야함...
 
 
 
@@ -1105,6 +1427,16 @@ for num in numbers:
     if num == 3:
         pass
 ```
+
+
+
+for vs while
+
+for는 반복 가능한 애들을 꺼내준다 통(컨테이너)을 어떻게 만들지 생각하기 
+
+while은 어떠한 조건이 참일 때 실행한다 -> 종료조건(거짓) 조건을 어떻게 설계할지 생각하기
+
+=> 결과 변수를 초기화하는데 많은 생각을 해야함...
 
 
 
