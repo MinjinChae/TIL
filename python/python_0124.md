@@ -189,7 +189,7 @@ Q. 문자열은  immutable한데 문자열 변경 메소드란 뭔가요...?
   	a.split()
   ['Life','is','too','short']
   b = "a:b:c:d"
-  	b.split()
+  	b.split(:)
   ['a','b','c','d']
   ```
 
