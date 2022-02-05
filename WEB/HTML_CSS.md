@@ -2,19 +2,66 @@ HTML,CSS를 배울때 궁금한게 생기면 mdn을 무조건 붙여서 검색�
 
 w3school 참고하기
 
-# HTML 기본구조
+# HTML
+
+Hyper Text Markup Language
+
+Hyper Text: 참조(하이퍼링크)을 통해 사용자가 한 문서에서 다른 문서로 접근할 수 있는 텍스트
+
+Markup Language: 태그를 이용하여 문서나 데이터의 구조를 명시하는 언어 ex)HTML, Markdown
+
+=> 웹 페이지를 작성(구조화)하기 위한 언어
 
 
 
-데이터의 데이터를 메타 데이터라고함
+# HTML 기본 구조
 
-다른 데이터를 설명해주는 데이터
+### HTML 기본 구조
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head> 
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+```
+
+html: 문서의 최상위 요소
+
+head: 문서 메타데이터 요소 (문서 제목, 인코딩, 스타일, 외부 파일 로딩 등) -> 일반적으로 브라우저에 나타나지 않음 
+
+body: 문서 본문 요소 -> 실제 화면 구성과 관련 
+
+메타데이터란? 데이터의 데이터를 메타 데이터라고함, 다른 데이터를 설명해주는 데이터
 
 ex)카카오톡에 링크 보냈을때 생각
 
 
 
-DOM 트리
+### head 예시
+
+```html
+<head>
+  <title>Document</title>
+  <meta charset="UTF-8">
+  <link href="style.css" rel="stylesheet">
+  <script src="javascript.js"></script>
+  <style>
+    p {
+      color: black;
+    }
+  </style>
+</head>
+```
+
+
+
+### DOM 트리
 
 어떠한 문서를 각각의 객체로 만든 트리 구조의 모델
 
@@ -24,19 +71,21 @@ HTML문서를 트리 구조로 만들어서 모델을 구성함
 
 각각의 요소(html,tag,title)에 접근 및 수정이 용이함
 
-
-
-HTML은 space2칸 지켜쓰기!
+HTML은 space2칸 지켜쓰기! (Python은 4칸)
 
 
 
-요소
+### 요소(elements)
 
-여는태그 내용물 닫는태그
+<여는태그> 내용물 <닫는태그> 
 
-내용이 없는 태그도 있다. 여는태그와 닫는태그에 내용이 들어가는데 내용이 없는 태그도 있음
+```html
+<h1>contents</h1>
+```
 
-br(개행,줄바꿈), hr, img, input, link, meta
+html의 요소는 여는(시작)태그, 내용물, 닫는(종료)태그로 구성
+
+내용이 없는 태그도 있음 ->br(개행,줄바꿈), hr(수평선), img, input, link, meta
 
 각각의 요소는 중첩이 될 수 있음
 
