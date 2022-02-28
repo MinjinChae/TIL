@@ -61,5 +61,5 @@ for tc in range(1, T + 1):
         result = max_num2
 
 
-    print(f'#{tc} {result} ')
+    print(f'#{tc} {result}')
 
