@@ -361,3 +361,11 @@ url에다 ?key value
 post
 
 url에 담지않고 body라는 영역에 데이터를 한겹 숨겨서 전송
+
+
+
+
+
+namespace
+
+url name
