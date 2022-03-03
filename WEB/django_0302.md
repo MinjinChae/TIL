@@ -224,6 +224,26 @@ def index(reauest):
 
 
 
+Language Code
+
+django를 사용하는 사용자에게 제공하는 언어를 설정함 번역을 해줌
+
+기본값이 영어로 되어있어서 한글로도 바꿀 수 있음
+
+
+
+Django Template
+
+데이터 표현을 제어하는 도구, 표현에 관련된 로직
+
+built in system
+
+django template language가 존재함
+
+-> DTL
+
+
+
 DTL 
 
 조건, 반복, 변수, 치환, 필터 등의 기능을 제공
@@ -236,6 +256,8 @@ for가 있는데 이름만 맞춘것 뿐
 
 
 
+  
+
 Variable
 
 양쪽에 중괄호 2개 그안에 변수를 쓰고 render함수를 통해 변수를 template에 보냄
@@ -245,6 +267,10 @@ dot(.) 을 사용해서 변수 속성에 접근할 수 있음
 render의 세번째 인자로 딕셔너리 형태로 넘겨줌
 
 Filters
+
+변수 뒤쪽에 사용 
+
+lower 문자열을 소문자로 바꿔줌 
 
 Tags
 
@@ -271,3 +297,67 @@ port는 이 컴퓨터랑 프로그램이 소통하는 창구
 나는 1270.0.0.1이랑은 컴퓨터랑 8000번이라는 창구에서 소통할거야!
 
 장고는 port번호를 따로 명시하지 않으면 그냥 8000번을 사용함
+
+
+
+include 다른 html 코드를 가져와서 여기에 쓰겠다!
+
+
+
+HTML Form
+
+action 
+
+method 
+
+get 어떤 데이터를 그냥 달라고할 때
+
+post 내가 글을 작성하거나 회원가입을 하거나 뭔가 데이터를 저장, 쓸 때 (semantic tag같음 의미론적임)
+
+
+
+input요소는 type에 따라서 어떻게 입력받을지 달라짐
+
+name 데이터를 서버에 전송할 때 어떤 데이터인지 명시해주는것 
+
+서버가 데이터에 접근할 때 name으로 접근함 이름 주세요 주소 주세요!
+
+key value형태인데 key에는 name이 value에는 사용자가 입력한 값이 들어감
+
+GET 방식은 url로 데이터를 넘겨줌(Post와의 차이점!)
+
+
+
+label
+
+input에 대한 설명을 나타냄
+
+
+
+HTTP
+
+hyper text를 주고받는 하나의 약속
+
+어떻게 문서에 대한 데이터 교환을 할 것인가에 대한 약속
+
+이 protocol로 주고 받을거야! www야 이 웹사이트를 줄래?
+
+HTTP request method의 종류
+
+get, post, put, delet... 
+
+put 서버로부터 어떤 정보를 수정하는구나
+
+delete 서버로부터 어떤 정보를 삭제하는구나
+
+
+
+get
+
+body가 아닌 쿼리스트링형태로 전송
+
+url에다 ?key value
+
+post
+
+url에 담지않고 body라는 영역에 데이터를 한겹 숨겨서 전송
