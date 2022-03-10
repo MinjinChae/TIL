@@ -54,6 +54,8 @@ Database
 
 테이블
 
+모델 클래스를 만듬으로써 테이블을 지정해줌
+
 열 column  데이터의 속성들
 
 행 row 데이터를 추가하면 row가 늘어남 
@@ -120,6 +122,12 @@ SQL 모르는데 데이터베이스를 다루고 싶으니까 쓰는거
 
 
 
+class로 만들어야함  modes.Model로 상속받아야함
+
+
+
+CharField 핸드폰 번호를 입력하라고 했는데 유저는 이름을 쓸 수도 있어서 유효성 검사를 해줘야함
+
 CharField는 반드시 max_length가 필요함!
 
 field options
@@ -150,7 +158,7 @@ blank 빈칸으로 두어도 될지 선택하는것
 
 관리자 인증 컨텐트타입 세션
 
-히스토리에 쌓는 마이그레이션을 만들어줄때 python manage.py makemigratios
+히스토리처럼 쌓는 마이그레이션을 만들어줄때 python manage.py makemigratios
 
 적용되지 않은 마이그레이션을 적용할때 python manage.py migrate
 
@@ -283,6 +291,24 @@ redirect import해줌
 
 
 
+
+db 데이터를 저장해둬야 밑에서 활용가능
+
+
+
+이 url이 들어오면 views이 delete로 보내!
+
+
+
+빨간색 디테일 노란색 삭제 초록색 인덱스
+
+
+
+post 일때도 삭제가 되겠지만 이 view 로 들어오면 삭제됨
+
+데이터베이스에는 항상 utc 기준으로 저장
+
+어떻게 보여줄지 지정해주는게  timezone 속성
 
 
 
