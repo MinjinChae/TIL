@@ -634,11 +634,18 @@ include 다른 html 코드를 가져와서 여기에 쓰겠다!
 
 
 
-HTML Form
+## HTML Form
 
-action 
+### HTML form element
 
-method 
+서버에 데이터를 제출하기 위한 요소
+
+사용자 정보를 입력하는 여러 방식을 제공
+
+핵심 속성(attribute)
+
+- action: 입력 데이터가 전송될 URL 지정
+- method: 입력 데이터 전달 방식 지정
 
 get 어떤 데이터를 그냥 달라고할 때
 
@@ -646,35 +653,63 @@ post 내가 글을 작성하거나 회원가입을 하거나 뭔가 데이터를
 
 
 
-input요소는 type에 따라서 어떻게 입력받을지 달라짐
+### HTML input element
 
-name 데이터를 서버에 전송할 때 어떤 데이터인지 명시해주는것 
+사용자로부터 데이터를 입력 받기 위한 요소
 
-서버가 데이터에 접근할 때 name으로 접근함 이름 주세요 주소 주세요!
+type에 따라서 어떻게 입력받을지 달라짐
 
-key value형태인데 key에는 name이 value에는 사용자가 입력한 값이 들어감
+핵심 속성(attribute)
+
+- name: 데이터를 서버에 전송할 때 어떤 데이터인지 명시해주는것 
+
+서버에 전달하는 파라미터는 딕셔너리형태인데 key에는 name이 value에는 사용자가 입력한 값이 들어감
+
+서버가 데이터에 접근할 때 name으로 접근함 -> 이름 주세요 주소 주세요!
 
 GET 방식은 url로 데이터를 넘겨줌(Post와의 차이점!)
 
-
-
-label
-
-input에 대한 설명을 나타냄
+![method_get](django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20153914.jpg)
 
 
 
-HTTP
+### HTML label element
 
-hyper text를 주고받는 하나의 약속
+input에 대한 설명을 나타냄, input값의 이름표
 
-어떻게 문서에 대한 데이터 교환을 할 것인가에 대한 약속
+label을 input 요소와 연결
 
-이 protocol로 주고 받을거야! www야 이 웹사이트를 줄래?
+-> input에 id 속성 부여, label에 input의 id와 동일한 값의 for 속성 부여
+
+-> 화면 리더기에서 label을 읽어 사용자가 입력해야하는 텍스트가 무엇인지 이해할 수 있도록 도움, label을 클릭해서 input에 초점을 맞추거나 활성화 시킬 수 있음 id의 텍스트를 누르면 옆에 있는 text field에 커서가 위치됨!
+
+
+
+### HTML for attribute
+
+button, input(not hideen type), select, textarea...
+
+
+
+### HTML id attribute
+
+must be unique해야 하는 식별자 정의
+
+linking, scripting, styling 시 요소를 식별
+
+
+
+### HTTP
+
+Hyper Text Transfer Protocol
+
+hyper text를 주고받는 하나의 약속 -> 어떻게 문서에 대한 데이터 교환을 할 것인가에 대한 약속
+
+이 protocol로 주고 받을거야!  www야 이 웹사이트를 줄래?
 
 HTTP request method의 종류
 
-get, post, put, delet... 
+GET, POST, PUT, DELETE ... 
 
 put 서버로부터 어떤 정보를 수정하는구나
 
@@ -682,20 +717,238 @@ delete 서버로부터 어떤 정보를 삭제하는구나
 
 
 
-get
+### HTTP request method - GET
 
-body가 아닌 쿼리스트링형태로 전송
+서버로부터 정보를 조회하는데 사용, 데이터를 가져올 때만 사용해야 함
 
-url에다 ?key value
+데이터를 서버로 전송할 때 body가 아닌 query string parameters를 통해 전송
 
-post
+url에다 ?key value 형태
 
-url에 담지않고 body라는 영역에 데이터를 한겹 숨겨서 전송
-
-
+반면, POST는 url에 담지않고 body라는 영역에 데이터를 한겹 숨겨서 전송
 
 
 
-namespace
+## URL
 
-url name = "~"
+### Variable Routing
+
+URL 주소를 변수로 사용하는 것
+
+URL 일부를 변수로 지정하여 view 함수의 인자로 넘길 수 있음
+
+-> 변수 값에 따라 하나의 path()에 여러 페이지를 연결 시킬 수 있음
+
+<img src="django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20170406.jpg" alt="variable routing" style="zoom: 80%;" />
+
+
+
+### URL Path converters
+
+- str
+
+  '/' 를 제외한 모든 문자열과 매치
+
+  작성하지 않으면 기본 값
+
+  
+
+- int
+
+  0 or 양의 정수와 매치
+
+  
+
+- slug
+
+  ASCII 문자 or 숫자, 하이픈 및 밎줄 문자로 구성된 모든 슬러그 문자열과 매치
+
+  ex. building-your-1st-djanog-site
+
+  
+
+![variable routing2](django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20170652.jpg)
+
+
+
+view 함수에 인자로 넘겨줘야함!!
+
+
+
+### App URL mapping
+
+app의 view 함수가 많아지면 path()도 많아져서 프로젝트의 urls.py에서 모두 관리하는 것은 프로젝트 유지보수에 있어 비효율적
+
+-> 각 app에 urls.py를 작성!
+
+1. app안에 urls.py 만들기
+2. 프로젝트 urls.py에서 각 앱의 urls.py 파일로URL 매핑 위탁
+3. 현재 디렉토리 안에서 view 함수를 import 하기
+
+4. app_name 설정
+
+5. project의 urls.py의 urlpattern에 앱 이름으로 바꿔주고  views 함수 대신 앱 이름.urls를 include해주기
+6. import에 include 추가
+
+
+
+include()
+
+- 다른 URLconf(app1/urls.py)들을 참조할 수 있도록 함
+
+- 함수 include()를 만나면 URL의 그 시점까지 일치하는 부분을 잘라내고 남은 문자열 부분을 후속 처리하기 위해 include된 URLconf로 전달 (뭔소리여)
+
+  
+
+
+
+### Naming URL patterns
+
+지금까지는 a태그에 url을 직접 작성하는 것이 아니라 path()함수의 name 인자를 정의해서 사용
+
+Django template Tag url 태그를 사용 path() 함수에 작성한 name 을 사용할 수 있음
+
+url template tag는  주어진 URL 패턴 이름 및 선택적 매개 변수와 일치하는 절대 경로 주소를 반환(뭔소리여)
+
+템플릿에 url을 하드 코딩하지 않아도 된다는 장점이 있음
+
+<img src="django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20173205.jpg" alt="naming url patterns" style="zoom: 67%;" />
+
+<img src="django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20173501.jpg" alt="namig url patterns2" style="zoom:67%;" />
+
+
+
+현재 디렉토리에 있는 views를 import 함(같은 앱 안의 views.py에 있으니까!)
+
+앱의 url에 오기전에 project의 urls.py를 먼저 만남 그래서 pages앱의 url을 연결시켜주는 path를 만들어 줘야 함
+
+url pages로 요청이 들어오면 그 이후로는 pages앱의 urls.py로 이어서 보게 될 것이다!
+
+include함수에 pages.urls를 인자값으로 넣어줌
+
+
+
+## Namespace
+
+articles app 과 pages app에 index라는 같은 이름의 url, template이 존재하면 에러가 발생함!
+
+-> 왜? url namespace, template namespace 문제 때문
+
+1.서로 다른 app의 같은 이름을 가진 url name은 이름공간을 설정해서 구분
+
+2.template, static 등 django는 정해진 경로 하나로 모아서 보기 때문에 중간에 폴더를 임의로 만들어 줌으로써 이름 공간을 설정
+
+
+
+### URL namespace
+
+url namespace를 사용하면 서로 다른 앱에서도 동일한 url 이름을 사용하는 경우에도 이름이 지정된 url을 사용할 수 있음
+
+어떤 app의 url인지 적어줘야함! ->app의 urls.py에 "app_name"에 attribute 값 작성
+
+그래서 template의 url 태그에 : 을 넣어줘야함
+
+두번째 앱도 마찬가지로!
+
+<img src="django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20184542.jpg" alt="url namespace"  />
+
+
+
+### Template Namespace
+
+django는 app_name/templates 경로에 있는 templates 파일들만 찾을 수 있고  INSTALLED_APPS에 작성한 app 순서로 template을 검색 후 렌더링 함 그래서 앱이름과 같은  폴더를 똑같이 만들어 임의로 이름 공간을 생성해 줌 
+
+이게 template namespace역할을 함!
+
+app_name/templates/index.html
+
+-> app_name/templates/app_name/index.html   
+
+![template namespace1](django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20185307.jpg)
+
+폴더 구조를 변경 했기 때문에 views.py의 함수에서도 두번째 인자인 템플릿 경로에 '앱 이름/~' 로 경로를 바꿔줌
+
+![template namespace2](django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20185115.jpg)
+
+
+
+# Static files
+
+응답할 때 별도의 처리 없이 파일 내용을 그대로 보여주면 되는 파일(이미지, js, css) 
+
+django는 staticfiles 앱을 통해 정적 파일과 관련 된 기능을 제공함
+
+INSTALLED_APPS에 기본적으로 등록되어 있어서 별도로 추가할 필요 없음
+
+
+
+ ### Static file 구성
+
+1. django. contriv.staticfiles가 INSTALLED_APPS에 포함되어 있는지 확인
+
+2. settings.py에서 STATIC_URL 정의(이미 되어있음)
+
+3. 템플릿에서 static 템플릿 태그를 사용하여 지정된 상대경로에 대한 URL을 빌드
+
+   static 태그 뒤에 이미지의 경로를 써줌!
+
+   static 태그는 빌트인 태그가 아니기 때문에 load를 써줘야 함!!!(STATIC_ROOT에 저장된 정적 파일에 연결)
+
+   <img src="django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20211324.jpg" alt="static file" style="zoom:150%;" />
+
+4. 앱의 static 디렉토리에 정적 파일을 저장 -> my_app/static/my_app/example.jpg(template위치랑 유사!)
+
+![static file2](django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20211748.jpg)
+
+*주의! load는 extends 아래에 써줘야 함! 
+
+extends는 다른 어떤 태그들 보다 최상단에 있어야 하기 때문에!!(무.조.건)
+
+
+
+### STATIC_URL
+
+이미지를 개발자 도구로 찍어보면 host/static/이미지 경로 라는 url이 나타남
+
+STATIC_URL이 중간 url을 만들어 주는 역할을 한 것!
+
+*주의 /static/ 앤드슬래시 있어야 함!!
+
+<img src="django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20212829.jpg" alt="static url" style="zoom:150%;" />
+
+이 이미지 url이 있어야 이미지가 출력이 됨
+
+-> 사용자의 요청에 의해서 이미지가 보여짐  왜냐하면 요청은 url로 오기 때문에 이미지를 보여주기 위해서는 url이 있어야 하기 때문에! 
+
+
+
+### STATIC_DIRS
+
+정적 파일 추가 경로 만들어 주는 경우
+
+1. 최상단(base.html과 같은 위치)에 static 폴더를 만들어 줌
+
+2. settings.py에 정적 파일 위치 및 추가 경로 작성
+3. template에 load로 static tag를 불러와서 이미지의 경로를 참조 해줌
+
+![static dirs](django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20215505.jpg)
+
+<img src="django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20215736.jpg" alt="static dirs2" style="zoom:150%;" />
+
+개발자 도구로 확인해보면?
+
+![static url3](django_0302.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-19%20215935.jpg)
+
+
+
+### STATIC_ROOT
+
+collectstatic이 배포를 위해 정적 파일을 수집하는 디렉토리의 절대 경로
+
+django 프로젝트에서 사용하는 모든 정적 파일을 한 곳에 모아 넣는 경로
+
+개발 단계에서 debug 값은 디버그를 위해 True로 되어있음 얘를 False로 바꾸면 배포 단계가 되어버림
+
+실 서비스 환경에서 django의 모든 정적 파일을 다른 웹 서버가 직접 제공하기 위함
+
+ 
