@@ -188,7 +188,7 @@ django가 model에 생긴 벼화를 반영하는 방법
 
 1. makemigrations
 
-   moeel을 변경한 것에 기반한 새로운 마이그레이션을 만들 때 사용
+   model을 변경한 것에 기반한 새로운 마이그레이션을 만들 때 사용
 
    <img src="django_0308.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-20%20000940.jpg" alt="makemigrations"  />
 
@@ -330,7 +330,7 @@ article.save()
 
 3. QuerySet API - create() 사용
 
-Article.objects.create(title='~~', context='text')
+Article.objects.create(title='~~', content='text')
 
 ![create 3](django_0308.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-03-20%20012716.jpg)
 
@@ -372,7 +372,7 @@ get은 한가지의 데이터만 가져오기  때문에 둘 이상의 객체를
 
 - filter()
 
-주어진 lookup 매개변수오 일치하는 객체를 포함하는 새 QuerySet을 반환
+주어진 lookup 매개변수와 일치하는 객체를 포함하는 새 QuerySet을 반환
 
 조건과 일치하는 모든 데이터를 가져와줌!
 
@@ -621,7 +621,7 @@ models.py 에 정의한  \__str__의 형태로 객체가 표현됨(뭔소리여)
 
     urls.py
 
-    Variable Routing 활용하기 -> paht에  '\<int:pk>/' 넣어주기
+    Variable Routing 활용하기 -> path에  '\<int:pk>/' 넣어주기
 
 GET은 form의 GET method
 
