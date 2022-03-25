@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3474d500-a1c3-4e0e-bbf8-3c15489e0161" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/새 폴더/새 폴더/sol1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/새 폴더/sol1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOJ/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/새 폴더/새 폴더/sol3.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +49,11 @@
       <recent name="C:\Users\aldwl\PycharmProjects\pythonProject1" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\aldwl\Desktop\TIL\Algorithm_problem\pythonProject1\BOJ\boj_2178_미로 탐색" />
       <recent name="C:\Users\aldwl\Desktop\TIL\Algorithm_problem\pythonProject1\새 폴더\새 폴더" />
       <recent name="C:\Users\aldwl\Desktop\TIL\Algorithm_problem\pythonProject1\새 폴더\재귀 함수" />
       <recent name="C:\Users\aldwl\Desktop\TIL\Algorithm_problem\pythonProject1\새 폴더" />
       <recent name="C:\Users\aldwl\Desktop\TIL\Algorithm_problem\pythonProject1\0324\swea_1242_단순2진암호코드" />
-      <recent name="C:\Users\aldwl\Desktop\TIL\Algorithm_problem\pythonProject1\0324\swea_5186_이진수2" />
     </key>
   </component>
   <component name="RunManager" selected="Python.sol3 (1)">
@@ -68,27 +70,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="sol1 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pythonProject1" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0324/swea_5185_이진수" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0324/swea_5185_이진수/sol1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -118,7 +99,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sol1 (3)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="sol1 (4)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonProject1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -126,11 +107,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0324/swea_5186_이진수2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/새 폴더/새 폴더" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/0324/swea_5186_이진수2/sol1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/새 폴더/새 폴더/sol1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -168,6 +149,27 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/새 폴더/새 폴더" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\aldwl\Desktop\TIL\Algorithm_problem\pythonProject1\새 폴더\새 폴더\sol1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sol1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/0323/swea_1240_단순 2진 암호코드" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -189,11 +191,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/새 폴더/새 폴더" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BOJ/boj_2178_미로 탐색" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/새 폴더/새 폴더/sol3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BOJ/boj_2178_미로 탐색/sol3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -226,10 +228,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.sol3 (1)" />
+        <item itemvalue="Python.sol1 (4)" />
+        <item itemvalue="Python.sol1" />
         <item itemvalue="Python.sol3" />
         <item itemvalue="Python.sol1 (2)" />
-        <item itemvalue="Python.sol1 (3)" />
-        <item itemvalue="Python.sol1 (1)" />
       </list>
     </recent_temporary>
   </component>
