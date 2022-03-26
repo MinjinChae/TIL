@@ -1,4 +1,13 @@
 from collections import deque
+# dfs 정의
+def dfs(n):
+    # 현재 노드를 방문 했어요 표시
+    visited[n] = 1
+    print(n, end=' ')
+    # 현재 노드랑 연결된 노드들 재귀적으로 방문해!
+    for i in graph[n]:
+        if not visited[i]:
+            dfs(i)
 
 # bfs 정의
 def bfs(n):
@@ -30,12 +39,10 @@ for _ in range(M):  # M줄만큼 입력 받아
     graph[j].append(i)
 
 # 작은 것 먼저 방문해야해!
-for _ in range(N+1):
+for i in range(1, N+1):
     graph[i].sort()
 
+dfs(V)
+print()
+visited = [0 for _ in range(N+1)]
 bfs(V)
-
-
-print(graph)
-# print(visited)
-# for _ in range(M):
