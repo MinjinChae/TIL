@@ -34,3 +34,4 @@ if arr[nx][ny] == 1:
     print(f'#{tc} {cnt}')
 
 
+
