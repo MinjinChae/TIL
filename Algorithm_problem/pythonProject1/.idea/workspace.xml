@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3474d500-a1c3-4e0e-bbf8-3c15489e0161" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Algo1_서울_4반_채민진.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rabbit.txt" beforeDir="false" afterPath="$PROJECT_DIR$/새 폴더/prob1/rabbit.txt" afterDir="false" />
-    </list>
+    <list default="true" id="3474d500-a1c3-4e0e-bbf8-3c15489e0161" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
