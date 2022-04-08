@@ -184,7 +184,7 @@ blank: 빈칸으로 두어도 될지 선택하는것
 
 ### Migrations
 
-django가 model에 생긴 벼화를 반영하는 방법
+django가 model에 생긴 변화를 반영하는 방법
 
 1. makemigrations
 
