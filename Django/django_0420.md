@@ -1,5 +1,3 @@
-
-
 웹엑스 설명
 
 서버에는 두개가 있는데
@@ -452,6 +450,14 @@ article을 조회했는데 1000개의 데이터가 있어
 
 
 
+
+
+
+
+
+
+
+
 \# *serialize를 사용할 때 여러개의 형태가 들어갈 때* 
 
   \# *우리가 넘겨주는 데이터가 한개짜리가 아니라 여러개야* 
@@ -497,6 +503,38 @@ content만 보냈음에도 불구하고 정상적으로 데이터가 들어감�
 평가에도 안나와
 
 
+
+그동안 ModelForm을 통해서 사용자의 요청을 받는 form을 만들었는데 이제는 이 데이터를 serializer해주는 도구=model serial 를 사용할거야! -> serializers.py를 만들고 기존의 ModelForm과 굉장히 유사한 구조의 DRF를 사용하는 ModelSerializer를 만들거야
+
+
+
+### Django REST Framesork(DRF)
+
+Web API 구축을 위한 강력한 Toolkit을 제공하는 라이브러리
+
+DRF의 Serializer는 Django의 Form 및 ModelForm 클래스와 매우 유사하게 구성되고 동작함
+
+Web API 웹 애플리케이션 개발에서 다른 서비스에 요청을 보내고 응답을 받기 위해 정의된 명세
+
+![drf](django_0420.assets/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202022-04-22%20022346.jpg)
+
+
+
+## Single Model
+
+### Postman
+
+Postman 참고 아니구 필수라구...
+
+API를 구축하고 사용하기 위해 여러 도구를 제공하는 API 플랫폼
+
+설계, 테스트, 문서화 등의 도구를 제공함으로써 API를 더 빠르게 개발 및 생성할 수 있도록 도움
+
+->  간단히 말해서, 실제로 요청을 하고 응답을 받는 프로그램이야!
+
+
+
+ 
 
 
 
