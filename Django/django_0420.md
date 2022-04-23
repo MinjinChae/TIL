@@ -534,7 +534,483 @@ API를 구축하고 사용하기 위해 여러 도구를 제공하는 API 플랫
 
 
 
+
+
+## 실습
+
+articles/를 처리하는 view함수는 GET, POST 처리 
+
+articles/1/ variable routing을 처리하는 view함수는 GET, PUT, DELETE 처리
+
+url과 view 함수는 2개씩!
+
+
+
+1. 가상환경 설정 및 패키지 설치
+
+   
+
+2. 설치된 app 확인
+
+
+
+3. urls.py 작성(작성되어 있음)
+
+   지금까지와 다르게  'api/v1/'으로 되어있음 -> 우리의 api version 1이야! 
+
+   articles 앱의 urls들을 include 함
+
+   articles/urls.py 만들어주기
+
+   
+
+4. models.py작성(작성되어 있음)
+
+
+
+5.  Dummy Data 생성
+
+   django-seed 라이브러리 사용해서 모델 구조에 맞는 데이터 생성
+
+   (해당 실습에서는 migrations 파일이 이미 생성되어 있기 때문에 migrate만 진행해주면 됨)
+
+   migrate가 되어야 seed가 됨 테이블이 있어야 데이터가 들어가니까!
+
+
+
+6. articles/serializers.py 생성 후, ModelSerializer 작성
+
+   Model의 필드를 어떻게 직렬화 할 지 설정하는 것이 핵심
+
+   Django에서 Model 필드를 설정하는 것과 동일함
+
+   drf에서 serializers를 import 해줌
+
+   Article의 쿼리셋을 직렬화하기 위해서 AriticleListSerializer 클래스 선언
+
+   ModelForm 쓰는 것처럼 ModelSerializer 
+
+   Meta 클래스 작성도 동일함
+
+   
+
+7. GET - Article List
+
+   urls.py 
+
+   app_name, url name 필요없음 -> 템플릿도 없고 장고에서 쓸만한 url도 없으니까!
+
+   views.py 
+
+   현재 디렉토리의 models에서 Article import 해와
+
+   article_list 함수 선언 / 첫번째 인자는 request
+
+   전체 게시글 조회 -> articles = Article.objects.all()
+
+   현재 디렉토리의 serializers에서 ArticleListSerializer import 해와 
+
+   serializer 진행 -> ArticleListSerializer를 통해 serializer 인스턴스 생성하고 쿼리셋 articles이 첫번째 인자, multiple  objects니까 many=True 옵션이 두번째 인자(필수!)
+
+   drf에 있는 response 모듈에서 Response import 해와
+
+   전체 게시글에 대한 응답을 JSON형태로 반환 ->  데이터를 JSON형태(serializer.data)로 추출
+
+   여기까지 하고 사이트를 요청하면 500 Internal Server Error가 발생함
+
+   -> 왜? drf의 view 함수는 필수적으로 api_view decorator가 필요함!!!
+
+   drf에 있는 decorators 모듈에서 api_view를 import 해와(@필수@ 빼먹지마!!)
+
+   이 view 함수는 GET 요청에서만 허용해
+
+   짜잔! 우리의 view 함수 이름을 따서 페이지에 있는 이름이 정해짐
+
+   생성일, 수정일 등 안뜨게 하고싶다면 serializers의 fields를 수정해주면됨
+
+   id랑 contetn만 필요해 -> fields = ('id', 'content', )
+
+   페이지를 제공하는게 아니라 데이터를 제공하는 경우, get_list_or_404 사용할 수 있음
+
+   조회하고자 하는 쿼리셋이 없으면 404 에러를 리턴하기
+
+   django의 shortcuts 모듈에서 get_list_or_404 import 해와
+
+   articles = Article.objects.all() -> articles = get_list_or_404(Article)
+
+   
+
+   
+
+8. GET - Article Detail
+
+   serializers.py
+
+   상세페이지에서는 더 많은 데이터(created_at,  updated_at)를 조회하기 위해서 Article List와 Article Detail을 구분함
+
+   -> 추가로 ArticleSerializer 정의
+
+   (필드를 구분하지 않는다면 그냥 똑같이 써도 상관없지만 이번 실습에서는 구분해서 진행)
+
+   urls.py
+
+   variable routing 필요함 -> 'articles/\<int:article_pk>/' view함수의 이름은 article_detail
+
+   views.py
+
+   article_list 함수 선언 / 첫번째 인자는 request, 두번째 인자는 article_pk
+
+   api_view decorator 사용, 이 view 함수는 GET 요청에서만 허용해(잊지말자)
+
+   단일 게시글 조회 -> article = Article.objects.get(pk=article_pk) 
+
+   이거 대신에 get_object_or_404 사용해주기!  조회하고자 하는 객체가 없으면 404 에러를 리턴하기
+
+   import에서 get_object_or_404 추가해주고 article = get_objecrt_or_404(Article, pk=article_pk)
+
+   serializer 진행하고 serializer된 객체의 데이터 속성 값 반환(위와 동일)
+
+   ArticleSerializer 사용해야 하니까 import 하고 serializer 해주기, multiple object가 아니기 때문에 many=True옵션 필요없음
+
+   
+
+   
+
+9. POST - Create Article 
+
+   article_list 함수로 게시글을 조회하거나 생성하는 행위를 모두 처리 가능
+
+   api_view decorator에 POST 추가해주기 -> 안해주면 405 에러 발생
+
+   article_list 함수에서 method를 분리해줌(if elif문으로)
+
+   요청받은 method가 GET일 때/ 요청받은 method가 POST일 때
+
+   if else가 아닌 if elif로 하는 이유는 DRF가 그냥 그렇게 권해서..(명시적으로 보여주기 위해서)
+
+   요청받은 method가 POST일 때 
+
+   serializer 진행 
+
+   자동완성을 보면 첫번째 인자가 insatance 근데 우리는 사용자 요청의 데이터를 넣어야 함
+
+   -> (data=request.data)
+
+   drf에서 status 모듈 import 해와
+
+   유효성 검사 진행 serializer가 유효해? 통과하면 저장하고 생성된 데이터와 status code를 응답해
+
+   여기서 status code는 201 Created 잘 작성이 되었다!
+
+   유효성 검사를 통과하지 못했으면 에러라는 속성 값과 status code를 응답해 
+
+   여기서 status code는 400 Bad Request 나쁜 요청이었다!
+
+   근데 is_valid 안쪽에 raise_exception=True를 넣어주면 400을 return하는 코드가 필요없어짐
+
+   = 여기서 문제가 발생하면 예외를 발생시켜요 그 예외가 400 Bad Request 발생시킴
+
+   
+
+10. DELETE - Delete Article
+
+    DELETE에 대한 처리는 pk값이 필요하기 때문에 article_detail  함수에서 처리함
+
+    api_view decorator에 DELETE 추가
+
+    if elif elif 문으로 나눠주기 -> 요청받은 method가 DELETE일 때 
+
+    method가 DELETE일 때도 get_object_or_404가 필요하기 때문에 제일 위로 올려줌
+
+    그러면 인스턴스 객체 article을 바로 삭제해주면 끝!
+
+    응답에 메세지를 넣어줄 수 있음
+
+    메세지와 204 status code를 응답해줌
+
+    
+
+11. PUT - Update Article
+
+    api_view decorator에 PUT 추가
+
+    요청받은 method가 PUT일 때 
+
+    serializer 인스턴스를 만들건데 첫번째 인자가 instance
+
+    POST일 때는 instance가 없어서 안넣었지만 여기에는 기존 객체 article을 넣어주고
+
+    두번째 인자에는 요청받은 데이터를 넣어줌
+
+    유효성 검사, raise_exception 속성값 True로 바꿔주기
+
+    저장하고 수정 된 데이터 응답하기 (별다른 status code 없음)
+
+    
+
+12. 데이터 베이스 초기화 후 Comment 모델 작성
+
+    article : comment -> 1: N  -> comment 클래스에 FK 작성함
+
+    모델은 그냥 작성하던대로 작성해
+
+    
+
+13. 마이그레이션 작업 후 data seed 진행
+
+    
+
+14. GET - Comment List
+
+    serializers.py 
+
+    CommentSerializer 작성
+
+    댓글은 굳이 댓글 전체를 조회하는걸 만들 필요가 없기 때문에 그냥 CommentSerializer만 작성
+
+    urls.py
+
+    
+
+    views.py
+
+    comment_list 함수 선언
+
+    현재 디렉토리에서 Comment 클래스 import 해와
+
+    article_list에서 했던 것처럼 똑같은거 반복
+
+    comments 변수 선언하고 get_list_or_404
+
+    CommentSerializer를 import해주고 이 쿼리셋을 serializer 진행하기
+
+    얘는 multiple object니까 many=True 옵션 잊지말고 넣어주기
+
+    serializer의 데이터를 응답해
+
+    api_view decoraor에 GET -> 이 view 함수는 GET 요청에서만 허용해
+
+    (지금까지 해왔던거  반복)
+
+    댓글에는 외래키가 있기때문에 article의 pk가 기본적으로 나옴 -> 이 1번 댓글은 12번 게시물에 달려있는거야
+
+    
+
+    
+
+15.  GET - Comment List 
+
+    urls.py
+
+    단일 댓글 조회니까 comment_pk를 variable routing로 넣어주기
+
+    views.py
+
+    아까 article_detail이랑 구조가 같음
+
+    comment_detail 함수 선언하고 첫번째 인자로 reqeust,  두번째 인자로 comment_pk 넣기
+
+    단일 객체 조회 -> comment = get_object_or_404(Comment, pk=comment_pk)
+
+    serializer 진행 단일 객체니까 many=True 필요없음
+
+    serializer의 데이터를 응답해
+
+    
+
+16. POST - Create Comment
+
+    urls.py
+
+    댓글이 작성되기 위해서는 몇번째 게시글인지도 필요함 article_pk가 필요하기 때문에 또 다른 view함수를 만들어야함
+
+    views.py
+
+    api_view decorator는 POST
+
+    comment_create 함수를 선언하고  reqeust,  두번째 인자로 article_pk 넣기
+
+    CommentSerializer를 통해 serializer 인스턴스를 만들고 인자로 사용자 요청의 데이터(사용자가 입력한 데이터)를 넣음 
+
+    유효성 검사, is_valid에 raise_exception=True 속성값 넣어주기
+
+    유효하다면 저장하고 데이터와 201 status code를 응답해
+
+    이렇게만 작성하면 에러가 발생함 -> 댓글을 작성하기 위해서는 몇 번 게시글에 작성했는지에 대한 정보를 가져와야 하는데 article_pk를 처리해주지 않았기 때문이야..
+
+    => 지금까지라면 save안에 commit=False를 넣었겠지만 여기서는 article에 article 객체를 넣어주면 됨!
+    
+    그전에 article 객체 조회해주기!! 조회한 article객체를 save에 키워드 인자로 넣어줌
+    
+    해당하는 컬럼(외래키 지정한 article)에 위에서 조회한 변수 이름을 설정
+    
+     그래도 400 Bad Request에러 발생 유효성 검사에서 걸린거구나!
+    
+    유효성 검사를 할 때 CommentSerializer에서 정의된 필드들만 검사를 진행하기 때문에 추가로 넣기전에 이미 유효성 검사에서 빈값이 있음
+    
+    -> 유효성 검사에서 serializer 유효성 검사를 하지 않도록 빼줘야함 유효성 검사에서 pass 하고 추가로 넣고 save 하도록 -> read only field
+    
+    serializers.py의 CommentSerializer에서 read_only_fields하고 읽기 전용 필드로 바꾸고자하는 컬럼명을 작성함 이렇게 되면 is_valid에서는 배제되고 응답에는 포함됨
+    
+    
+
+
+
+17. DELETE & PUT - delete, update Comment
+
+    comment_pk를 받는 comment_detail 함수에서 처리
+
+    api_view decorator에 DELETE, PUT 추가
+
+    if elif elif 문 사용해서 요청받는 method가 GET, DELETE, PUT일 때를 나눠지고 지금까지와 동일하고 작성함
+
+
+
  
 
+ 
 
+### ModelSerializer
+
+모델 필드에 해당하는 필드가 있는 Serializer 클래스를 자동으로 만들 수 있는 shortcut
+
+- 모델 정보에 맞춰 자동으로 필드 생성 -> 이미 모델 정보를 알고 있기 때문에 
+- serializer에 대한 유효성 검사기를 자동으로 생성
+- .create() & .update()의 간단한 기본 구현이 포함됨
+
+-> ModelForm이랑 비슷해! 모델 필드에 맞춰 응답에 대한 객체를 만들어줌
+
+
+
+### Serializer in Shell(shell_plus 이용)
+
+ipython이 있어야 실습하기 편함 shell_plus 실행전에 ipython 설치해주기 `pip install ipython`
+
+#2. 작성했던  ModelSerializer를 imoprt 해줘야 함
+
+articles 앱의 serializers에서 ArticleListSerializer import
+
+#3. ModelSerializer를 통해 instance 생성
+
+#4. serializer 진행
+
+serializer를 하기 위해서는 대상 즉, 객체가 필요함 모델 인스턴스이던, 쿼리셋이던!
+
+단일객체
+
+1번 게시글 하나 조회하기(ORM)
+
+이 모델 serializer의 인자로 객체(article)를 넣어줌
+
+출력해보면 객체가 들어가있음!
+
+serializer객체에 .data를 하면 우리가 원하는 JSON 데이터(속성값)이 나옴
+
+이번에는 쿼리셋일때
+
+전체 게시글 데이터를 JSON으로 줘야한다면?
+
+전체 게시글 조회하기(ORM)
+
+ArticleListSerializer에 인자로 쿼리셋(articles)를 넣어줌
+
+serializer에서 data를 추출하면 에러가 나옴 
+
+-> serializer하는 대사이 단일객체가 아니라 쿼리셋이라면 `many=True` 옵션을 넣어줘야함!!
+
+serializer한 데이터를 만드는 이유는 이 응답을 받는 대상은 파이썬을 쓰는 사람일수도 있고, 자바를 쓰는 사람일수도 있고  다른 언어를 쓰는 사람일수도 있음 결국 JSON 으로 변환해서 써야함 변환하기 위해 준비된 파일이 이거야!
+
+
+
+### 'many' argurment
+
+many=True
+
+단일 인스턴스가 아닌 QuerySet처럼 mutiple object등을 serializing하기 위해서 serializer를 인스턴스화 할 때 
+
+many=True를 키워드 인자로 전달해야함
+
+
+
+### api_view decorator
+
+view 함수가 응답해야 하는 HTTP method 목록을 리스트의 인자로 받음
+
+@api_view에 인자를 아무것도 넣지 않는다면 기본적으로 GET method만 허용함
+
+다른 method 요청에 대해서는 405 Method Allowed로 응답함
+
+DRF에서는 선택이 아닌 필수적으로 작성해야 해당 view 함수가 정상적으로 동작함
+
+
+
+ ### Status Codes in DRF
+
+DRF에는 status code를 보다 명확하고 읽기 쉽게 만드는 데 사용할 수 잇는 정의된 상수 집합을 제공
+
+status 모듈에 HTTP status code 집합이 모두 포함되어 있음
+
+단순히 status=201이라고 숫자로도 표현할 수 있지만 DRF는 권장하지 않음
+
+
+
+### 'raise_exception' argument
+
+is_valid()는 유효성 검사 오류가 있는 경우 serializers.ValidationError 예외를 발생시키는 선택적 raise_exception인자를 사용 할 수 있음
+
+기본적으로 HTTP status code 400을 응답으로 반환함
+
+-> 데이터가 invalid할 때 400을 return 시키는 속성값 
+
+
+
+
+
+## 1:N Relation
+
+### Read Only Field(읽기 전용 필드)
+
+어떤 게시글에 작성하는 댓글인지에 대한 정보를 form-data로 넘겨주지 않았기 때문에 직렬화하는 과정에서 article 필드가 유효겅 검사(is_vlaid)를 통과하지 못함
+
+우리가 form-data에서 넘겨주는건 content(댓글의 내용)뿐! 외래키는 안보내고 view 함수에서 처리하고 싶음
+
+그래서 읽기 전용 필드(read_only_fields)설정을 통해 직렬화하지는 않고 반환 값, return에는 해당 필드가 포함되도록 설정할 수 있음
+
+
+
+
+
+### 1:N Serializer
+
+이제부터 커스텀~~
+
+단일 게시글을 조회할 때  게시글의 정보만 뜸 -> 1:N관계에서 1쪽은 외래키가 없으니까!
+
+근데 게시글이랑 이 게시글의 댓글 정보도 추가하고싶어!
+
+역참조..어떻게 수정해야할까?
+
+특정 게시글에 작성된 댓글 목록 출력하기 -> 기존 필드 override or 추가 필드 구성
+
+
+
+case1) PrimaryKeyRelatedField
+
+article의 pk를 참조하는 대상을 불러올 수 있음 -> comment
+
+원래 article.comment_set.all() 의 comment_set을 기존 필드로 가져오기
+
+무엇으로 출력할거야? serializers.PrimaryKeyRelatedField
+
+comment는 N으로 multiple objects니까 many=True 속성 필요함 
+
+comment_set 필드는 사용자로부터 입력을 받는것이 아니라 얘도 조회만 받아야함 -> read_only=True 속성 필요함 fields='\__all__'에 포함되어 있지 않으니까 Meta안에서 설정해주는게 아니라 인자에 속성 넣어주기
+
+만약 comment_set 이라는 이름이 싫다면 models.py의 Comment 클래스에서 related_name 설정해주면 됨
+
+
+
+case2) Nested relationships
+
+모델 관계상으로 참조된 대상은 참조하는 대상의 표현(응답)에  포함되거나 중첩(nested) 될 수 있음 
 
