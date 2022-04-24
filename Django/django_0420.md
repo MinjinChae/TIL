@@ -1014,3 +1014,21 @@ case2) Nested relationships
 
 모델 관계상으로 참조된 대상은 참조하는 대상의 표현(응답)에  포함되거나 중첩(nested) 될 수 있음 
 
+참조된 대상= Article   / 참조하는 대상=Comment
+
+CommentSerializer가 아래에서 정의되어 있기 때문에 ArticleSerializer보다 위로 올려주고
+
+ArticleSerizlier에서 comment_set 변수에 CommentSerializer을 호출해 올 수 있음
+
+똑같이 many=True, read_only=True 옵션 넣기
+
+-> 중첩된 표현이라고 함 보인을 참조하고 있는 serializer를 호출해서 가져올 수 있음
+
+아까는  comment_set = 13이라고 pk값이 나왔지만 이번에는 댓글의 내용이 다 나옴
+
+CommentSerializer 전체를 가져왔기 때문에! 필드를 조정하려면 CommentSerializer의 fields에서 조정하면 됨
+
+nested가 가능하려면 1:N 관계여야함!!
+
+
+
