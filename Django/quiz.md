@@ -52,8 +52,6 @@
 
 26. wildcards 사용 예시
 
-
-
 27. ex. Comment 모델은 외래키 article_id를 포함합니다.
 
 
