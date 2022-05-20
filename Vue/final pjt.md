@@ -140,6 +140,10 @@ error!!!  Component name "Footer" should always be multi-word  vue/multi-word-co
 
 
 
+대소문자, 오타조심
+
+로그인 필요해서 데이터가 안뜬거
+
 
 
 
