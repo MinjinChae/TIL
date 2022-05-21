@@ -146,5 +146,7 @@ error!!!  Component name "Footer" should always be multi-word  vue/multi-word-co
 
 
 
+이미지한테 wieth height 주고 width height 200px img 태그 옆에 div width height 100% relative, absoulute div display none img:hover + div.클래스명 { display: block } word-break: break-all
+
 
 
