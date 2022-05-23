@@ -150,3 +150,9 @@ error!!!  Component name "Footer" should always be multi-word  vue/multi-word-co
 
 
 
+수정사항
+
+footer 그냥 바이바이했음 헝
+
+
+
