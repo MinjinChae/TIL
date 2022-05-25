@@ -186,6 +186,18 @@ footer 그냥 바이바이했음 헝
 
  python manage.py loaddata movies.json images.json genres.json directors.json actors.json
 
+Failed to load resource: the server responded with a status of 404 (Not Found)
+
+
+
+no auth pages -> login, signup 인증하지 않아도  갈 수 있는 페이지 
+
+-> 여기가 아니라면 인증이 필요함
+
+login signup 이외의 페이지에 있고, 로그인을 하지 않았다면 로그인 페이지로 보내주고
+
+login, signup 페이지에 있고 로그인을 했다면 
+
 
 
 - moviedetail
@@ -233,6 +245,10 @@ navbar review 추가
 3. 리뷰 폼..
 
 4. 흐앙.... 
+
+
+
+
 
 
 
