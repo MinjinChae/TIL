@@ -182,3 +182,41 @@ footer 그냥 바이바이했음 헝
 
 - actorlist
 
+
+
+ python manage.py loaddata movies.json images.json genres.json directors.json actors.json
+
+
+
+- moviedetail
+
+  감독, 출연진 데이터 뽑아서 사진이랑 이름 배치 누르면 배우 디테일 페이지로 이동하도록 router 기능 추가!
+
+- actorlist
+
+  사진 배치, css효과 주기 이름 누르면 배우 디테일 페이지로 이동하도록 router 기능 추가하기
+
+- actordetail 
+
+  좋아요 기능이 이상하다...! ㅠㅠ
+
+  배치 다시 시켜주기 
+
+   word cloud or tag cloud 
+
+- homeview
+
+- community
+
+- 404페이지로 이동하는거 수정!
+
+
+
+
+
+
+
+
+
+
+
