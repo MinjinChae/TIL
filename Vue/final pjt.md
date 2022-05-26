@@ -212,6 +212,16 @@ footer 그냥 바이바이했음 헝
 
 
 
+background-color
+
+\#fcfcfc;
+
+
+
+signup router link 추가
+
+navbar review 추가
+
 
 
 
