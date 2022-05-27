@@ -224,6 +224,20 @@ navbar review 추가
 
 
 
+1. 홈화면 -> drf movies에 home 넣기 확인!
+
+   actors.js에서 state, getters, mutations, actions  
+
+2. actordetail 리뷰 게시글 생성 버튼 추가
+
+3. 리뷰 폼..
+
+4. 흐앙.... 
+
+
+
+
+
 
 
 
